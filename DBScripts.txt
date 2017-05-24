@@ -1,0 +1,86 @@
+CREATE SCHEMA `cs521` ;
+
+
+CREATE TABLE `cs521`.`customer` (
+  `customerid` INT(20) NOT NULL,
+  `firstname` VARCHAR(45) NULL,
+  `lastname` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `password` VARCHAR(45) NULL,
+  `address` VARCHAR(45) NULL,
+  `creditcard` INT(20) NULL,
+  `bookingdetails` VARCHAR(45) NULL,
+  PRIMARY KEY (`customerid`));
+
+  
+ALTER TABLE `cs521`.`customer` 
+CHANGE COLUMN `customerid` `customerid` INT(11) NOT NULL AUTO_INCREMENT ,
+ADD UNIQUE INDEX `customerid_UNIQUE` (`customerid` ASC);
+
+
+ALTER TABLE `cs521`.`customer` 
+CHANGE COLUMN `customerid` `customerid` INT(11) NOT NULL DEFAULT 100001 ;
+
+
+ALTER TABLE `cs521`.`customer` 
+CHANGE COLUMN `customerid` `customerid` INT(20) NOT NULL DEFAULT '100001' ,
+CHANGE COLUMN `creditcard` `creditcard` INT(20) NULL ;
+
+
+CREATE TABLE `cs521`.`reservation` (
+  `bookingid` VARCHAR(45) NOT NULL,
+  `customerid` INT(20) NULL,
+  `carid` INT(20) NULL,
+  `totaltime` INT(20) NULL,
+  `locationid` INT(20) NULL,
+  PRIMARY KEY (`bookingid`));
+
+  
+  CREATE TABLE `cs521`.`payment` (
+  `paymentid` VARCHAR(45) NOT NULL,
+  `customerid` INT(20) NULL,
+  `amount` INT(20) NULL,
+  `paymentstatus` VARCHAR(45) NULL,
+  `paymenttype` VARCHAR(45) NULL,
+  PRIMARY KEY (`paymentid`));
+
+  
+  CREATE TABLE `cs521`.`customeraccount` (
+  `accountno` VARCHAR(45) NOT NULL,
+  `customerid` INT(20) NULL,
+  `name` VARCHAR(45) NULL,,
+  PRIMARY KEY (`accountno`));
+  
+  CREATE TABLE `cs521`.`employee` (
+  `employeeid` VARCHAR(45) NOT NULL,
+  `name` VARCHAR(45) NULL,
+  `phone` INT(20) NULL,
+  `email` VARCHAR(45) NULL,
+  `employeetype` VARCHAR(45) NULL,
+  PRIMARY KEY (`employeeid`));
+
+  
+  CREATE TABLE `cs521`.`plan` (
+  `planid` VARCHAR(45) NOT NULL,
+  `plantype` VARCHAR(45) NULL,
+  `cardetails` VARCHAR(45) NULL,
+  PRIMARY KEY (`planid`));
+
+  CREATE TABLE `cs521`.`rentalcar` (
+  `carid` VARCHAR(45) NOT NULL,
+  `manufacturer` VARCHAR(45) NULL,
+  `model` VARCHAR(45) NULL,
+  PRIMARY KEY (`carid`));
+
+  CREATE TABLE `cs521`.`reports` (
+  `reportid` VARCHAR(45) NOT NULL,
+  `reporttype` VARCHAR(45) NULL,
+  `reservationdetail` VARCHAR(45) NULL,
+  PRIMARY KEY (`reportid`));
+
+  CREATE TABLE `cs521`.`dailyreport` (
+  `reportid` VARCHAR(45) NOT NULL,
+  `mechanicid` VARCHAR(45) NULL,
+  `problemdetails` VARCHAR(45) NULL,
+  PRIMARY KEY (`reportid`));
+
